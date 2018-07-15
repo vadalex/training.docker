@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Training.Docker.WebApp.Models.ItemRepository.Item>
+ 
+<div class="todo-container">
+    <div id="todo-header" class="header">
+        <h2>My To Do List</h2>
+        <form action="/home/additem" method="post">
+            <input type="text" id="addItemInput" placeholder="Title..." name="value">
+            <input type="submit" class="addBtn" value="Add">
+        </form>
+    </div>
+    <br />
+    <ul id="todo-list">
+        @foreach (var item in Model)
+        {
+            <li>
+                @Html.DisplayFor(modelItem => item.Value)
+            </li>
+        }
+    </ul>
+</div>

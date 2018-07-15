@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  training.docker.webapp:    
+    image: "vadalex/training.docker.webapp"
+    build:
+      context: .
+      dockerfile: Training.Docker.WebApp/Dockerfile
+    ports:
+      - "8000:80"
+    depends_on:
+      - sqlserver
+  sqlserver:
+    image: "microsoft/mssql-server-linux"
+    hostname: "sqlserver"
+    environment:
+      SA_PASSWORD: "GoodPassword123"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: Developer
+    ports: 
+      -  "1433:1433"
